@@ -21,3 +21,24 @@ In this task, we are working with a **Variational Autoencoder (VAE)** to perform
 
 4. **Training**: The model is trained for a specified number of epochs using an optimizer (Adam). During training, the model learns to minimize the combined reconstruction and KL divergence loss.
 
+
+### Results
+
+Run training (trains the VAE for 50 epochs and saves the plots to `docs/`):
+
+```bash
+pip install -r requirements.txt
+python -m src.GAN_Task2
+```
+
+**Training loss** (reconstruction MSE + KL divergence per sample):
+
+![VAE training loss](docs/loss.png)
+
+**Latent space**: the 13 features compressed to 2 dimensions (encoder mean), coloured by wine class. The three classes form separate clusters even though the labels are never used during training:
+
+![2D latent space](docs/latent_space.png)
+
+**Reconstruction**: original vs reconstructed standardized values for the first 10 samples. The decoder keeps the overall pattern of each sample but smooths out the extreme values, which is expected when compressing 13 features into 2:
+
+![Original vs reconstructed data](docs/reconstruction.png)
